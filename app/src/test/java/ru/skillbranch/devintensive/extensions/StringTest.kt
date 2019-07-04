@@ -46,5 +46,6 @@ class StringTest {
         assertEquals("12345", "12345  ".truncate(4))
         assertEquals("tab", "tab    ".truncate(4))
         assertEquals("dots......", "dots... a lot".truncate(6))
+        assertEquals("abc", "abc    ".truncate(15))
     }
 }
