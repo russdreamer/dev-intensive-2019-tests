@@ -6,13 +6,13 @@ import java.util.*
 
 class BaseMessageTest {
     @Test
-    fun makeUserTest(){
+    fun makeMessageTest(){
         val user = User.makeUser("Иван Кузьмин")
         var message = BaseMessage.makeMessage(user, Chat("0"), Date(), "text", "any text message")
         assertTrue(message is TextMessage)
         assertEquals("0", message.id)
         assertTrue(message.from === user)
-        message = BaseMessage.makeMessage(user, Chat("0"), Date(), "https://anyurl.com", "image",true)
+        message = BaseMessage.makeMessage(user, Chat("0"), Date(), "image", "https://anyurl.com",true)
         assertTrue(message is ImageMessage)
         assertEquals("1", message.id)
         assertTrue(message.isIncoming)
