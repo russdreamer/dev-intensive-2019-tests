@@ -26,8 +26,9 @@ class DateTest {
         val calendar = Calendar.getInstance()
         calendar.set(1988, 0, 2, 11,50, 0)
         val date = Date.from(calendar.toInstant())
-        assertEquals("Sat Jan 02 11:50:02 EET 1988", date.add(2, TimeUnits.SECOND).toString())
-        assertEquals("Tue Dec 29 11:50:02 EET 1987", date.add(-4, TimeUnits.DAY).toString())
+        val dateFormat = SimpleDateFormat("EEE MMM dd HH:mm:ss yyyy", Locale("ru"))
+        assertEquals("Сб янв 02 11:50:02 1988", dateFormat.format(date.add(2, TimeUnits.SECOND)))
+        assertEquals("Вт дек 29 11:50:02 1987", dateFormat.format(date.add(-4, TimeUnits.DAY)))
     }
 
     @Test
