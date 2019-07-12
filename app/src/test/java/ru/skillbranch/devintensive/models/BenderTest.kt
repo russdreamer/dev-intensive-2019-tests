@@ -46,7 +46,7 @@ class BenderTest {
         assertEquals("Отлично - ты справился\nНазови мою профессию?", response.first)
         response = bender.listenAnswer("актёр мультфильма")
         assertEquals("Это неправильный ответ\nНазови мою профессию?", response.first)
-        response = bender.listenAnswer("хозяин казино с блэкджеком и ...")
+        response = bender.listenAnswer("")
         assertEquals("Это неправильный ответ\nНазови мою профессию?", response.first)
         response = bender.listenAnswer("сгибальщик")
         assertEquals("Отлично - ты справился\nИз чего я сделан?", response.first)
