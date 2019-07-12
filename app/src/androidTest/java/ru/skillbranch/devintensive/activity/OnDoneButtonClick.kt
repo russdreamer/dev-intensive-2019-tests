@@ -40,6 +40,6 @@ class OnDoneButtonClick {
 
         assertTrue(openKeyboardHeight > closedKeyboardHeight)
         assertTrue(rule.activity.messageEt.text.isEmpty())
-        assertEquals("Отлично - ты справился\nНазови мою профессию?", rule.activity.textView.text)
+        assertEquals("Отлично - ты справился\nНазови мою профессию?", rule.activity.textTxt.text)
     }
 }

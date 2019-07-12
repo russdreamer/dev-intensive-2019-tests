@@ -50,16 +50,16 @@ class SaveStateOnRecreateTest {
 
     @Test
     fun listenAnswerState(){
-        assertEquals("Как меня зовут?", rule.activity.textView.text)
+        assertEquals("Как меня зовут?", rule.activity.textTxt.text)
         onView(withId(rule.activity.messageEt.id)).perform(typeText("Bender"))
         onView(withId(rule.activity.sendBtn.id)).perform(click())
-        assertEquals("Отлично - ты справился\nНазови мою профессию?", rule.activity.textView.text)
+        assertEquals("Отлично - ты справился\nНазови мою профессию?", rule.activity.textTxt.text)
         rotateScreen(rule.activity, true)
-        assertEquals("Назови мою профессию?", rule.activity.textView.text)
+        assertEquals("Назови мою профессию?", rule.activity.textTxt.text)
         rotateScreen(rule.activity, false)
-        assertEquals("Назови мою профессию?", rule.activity.textView.text)
+        assertEquals("Назови мою профессию?", rule.activity.textTxt.text)
         onView(withId(rule.activity.messageEt.id)).perform(typeText("bender"))
         onView(withId(rule.activity.sendBtn.id)).perform(click())
-        assertEquals("Отлично - ты справился\nИз чего я сделан?", rule.activity.textView.text)
+        assertEquals("Отлично - ты справился\nИз чего я сделан?", rule.activity.textTxt.text)
     }
 }
