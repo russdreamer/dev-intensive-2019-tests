@@ -1,19 +1,18 @@
-package ru.skillbranch.devintensive.activity
+package ru.skillbranch.devintensive
 
 import android.support.test.espresso.Espresso
 import android.support.test.espresso.action.ViewActions
 import android.support.test.espresso.matcher.ViewMatchers
 import android.support.test.rule.ActivityTestRule
 import android.support.test.runner.AndroidJUnit4
-import org.junit.Assert.*
+import org.junit.Assert.assertEquals
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
-import ru.skillbranch.devintensive.MainActivity
 import ru.skillbranch.devintensive.models.Bender
 
 @RunWith(AndroidJUnit4::class)
-class ValidatorTest {
+class Task6 {
     @Rule
     @JvmField
     val rule = ActivityTestRule(MainActivity::class.java)
