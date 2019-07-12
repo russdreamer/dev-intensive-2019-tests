@@ -4,7 +4,7 @@
 
 <b>ВНИМАНИЕ!</b> Необходимо добавить в build.gradle зависимость в dependencies:
 
-` androidTestImplementation 'com.android.support.test:rules:1.0.2' `
+>  ` androidTestImplementation 'com.android.support.test:rules:1.0.2' `
 
 </br></br>
 * Здесь лежат тесты уже для всех заданий.
