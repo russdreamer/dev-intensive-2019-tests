@@ -8,7 +8,8 @@
 
 и убедиться, что пакет и версия соответствую с раннером:
 
-> ` androidTestImplementation 'com.android.support.test:runner:1.0.2' `
+> ` androidTestImplementation 'com.android.support.test:runner:1.0.2' ` </br>
+Полный [build.gradle здесь](https://github.com/russdreamer/dev-intensive-2019-tests/blob/hometask_3_tests/app/build.gradle)
 
 </br></br>
 * Здесь лежат тесты уже для всех заданий.
@@ -21,3 +22,15 @@
   
 > Непроверенные методы:
 * --отсутствуют--
+
+</br></br>
+Ошибки:</br>
+В случае возникновения ошибок, когда не может найти классы тестов в импорте - проверьте, используете ли вы в build.gradle:</br>
+`testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"`
+
+в этом случае помимо</br>
+` androidTestImplementation 'com.android.support.test:rules:1.0.2'`
+
+добавить в зависимости:</br>
+`androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'`</br>
+`androidTestImplementation 'androidx.test:runner:1.2.0'`
