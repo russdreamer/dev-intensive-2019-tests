@@ -1,5 +1,8 @@
 package ru.skillbranch.devintensive
 
+import android.support.test.espresso.Espresso
+import android.support.test.espresso.action.ViewActions
+import android.support.test.espresso.matcher.ViewMatchers
 import android.support.test.rule.ActivityTestRule
 import android.support.test.runner.AndroidJUnit4
 import org.junit.Assert.*
@@ -71,6 +74,47 @@ class Task3 {
         response = bender.listenAnswer("Бандарчук")
         assertEquals("Это неправильный ответ\nКак меня зовут?", response.first)
         response = bender.listenAnswer("Bomberman")
+
         assertEquals("Это неправильный ответ. Давай все по новой\nКак меня зовут?", response.first)
+        response = bender.listenAnswer("Фрай")
+        assertEquals("Это неправильный ответ\nКак меня зовут?", response.first)
+        response = bender.listenAnswer("Зоя")
+        assertEquals("Это неправильный ответ\nКак меня зовут?", response.first)
+        response = bender.listenAnswer("Бандарчук")
+        assertEquals("Это неправильный ответ\nКак меня зовут?", response.first)
+        response = bender.listenAnswer("Bomberman")
+
+        assertEquals("Это неправильный ответ. Давай все по новой\nКак меня зовут?", response.first)
+        response = bender.listenAnswer("Фрай")
+        assertEquals("Это неправильный ответ\nКак меня зовут?", response.first)
+        response = bender.listenAnswer("Зоя")
+        assertEquals("Это неправильный ответ\nКак меня зовут?", response.first)
+        response = bender.listenAnswer("Бандарчук")
+        assertEquals("Это неправильный ответ\nКак меня зовут?", response.first)
+        response = bender.listenAnswer("Bomberman")
+        assertEquals("Это неправильный ответ. Давай все по новой\nКак меня зовут?", response.first)
+    }
+
+    @Test
+    fun listenAnswerNegativeUITest(){
+        assertEquals("Как меня зовут?", rule.activity.textTxt.text)
+        assertEquals(Bender.Status.NORMAL, rule.activity.benderObj.status)
+
+        Espresso.onView(ViewMatchers.withId(rule.activity.messageEt.id)).perform(ViewActions.typeText("Ender"))
+        Espresso.onView(ViewMatchers.withId(rule.activity.sendBtn.id)).perform(ViewActions.click())
+
+        assertEquals("Это неправильный ответ\nКак меня зовут?", rule.activity.textTxt.text)
+        Espresso.onView(ViewMatchers.withId(rule.activity.messageEt.id)).perform(ViewActions.typeText("Ender"))
+        Espresso.onView(ViewMatchers.withId(rule.activity.sendBtn.id)).perform(ViewActions.click())
+        assertEquals("Это неправильный ответ\nКак меня зовут?", rule.activity.textTxt.text)
+        Espresso.onView(ViewMatchers.withId(rule.activity.messageEt.id)).perform(ViewActions.typeText("Ender"))
+        Espresso.onView(ViewMatchers.withId(rule.activity.sendBtn.id)).perform(ViewActions.click())
+        assertEquals("Это неправильный ответ\nКак меня зовут?", rule.activity.textTxt.text)
+        rotateScreen(rule.activity, true)
+        rotateScreen(rule.activity, false)
+        Thread.sleep(2000)
+        Espresso.onView(ViewMatchers.withId(rule.activity.messageEt.id)).perform(ViewActions.typeText("Ender"))
+        Espresso.onView(ViewMatchers.withId(rule.activity.sendBtn.id)).perform(ViewActions.click())
+        assertEquals("Это неправильный ответ. Давай все по новой\nКак меня зовут?", rule.activity.textTxt.text)
     }
 }
