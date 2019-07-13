@@ -6,6 +6,10 @@
 
 >  ` androidTestImplementation 'com.android.support.test:rules:1.0.2' `
 
+и убедиться, что пакет и версия соответствую с раннером:
+
+> ` androidTestImplementation 'com.android.support.test:runner:1.0.2' `
+
 </br></br>
 * Здесь лежат тесты уже для всех заданий.
 * Для вашего удобства тесты разбиты по названию в соответствии с нумерацией заданий.
