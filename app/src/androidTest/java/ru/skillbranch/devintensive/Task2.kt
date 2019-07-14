@@ -70,4 +70,23 @@ class Task2 {
         Espresso.onView(ViewMatchers.withId(rule.activity.sendBtn.id)).perform(ViewActions.click())
         assertEquals("Отлично - ты справился\nИз чего я сделан?", rule.activity.textTxt.text)
     }
+
+    @Test
+    fun colorStatusTest() {
+        assertEquals(255, Bender.Status.NORMAL.color.first)
+        assertEquals(255, Bender.Status.NORMAL.color.second)
+        assertEquals(255, Bender.Status.NORMAL.color.third)
+
+        assertEquals(255, Bender.Status.WARNING.color.first)
+        assertEquals(120, Bender.Status.WARNING.color.second)
+        assertEquals(0, Bender.Status.WARNING.color.third)
+
+        assertEquals(255, Bender.Status.DANGER.color.first)
+        assertEquals(60, Bender.Status.DANGER.color.second)
+        assertEquals(60, Bender.Status.DANGER.color.third)
+
+        assertEquals(255, Bender.Status.CRITICAL.color.first)
+        assertEquals(0, Bender.Status.CRITICAL.color.second)
+        assertEquals(0, Bender.Status.CRITICAL.color.third)
+    }
 }
