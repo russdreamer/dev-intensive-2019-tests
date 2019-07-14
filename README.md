@@ -2,14 +2,16 @@
 
 <b>ВНИМАНИЕ!</b> тесты нужно засунуть в дирректорию с <b>ANDROID</b> тестами (androidTests)
 
-<b>ВНИМАНИЕ!</b> Необходимо добавить в build.gradle зависимость в dependencies:
+<b>ВНИМАНИЕ!</b> Не копируйте к себе мой build.gradle! Необходимо добавить в свой зависимость в dependencies:
+Над на блоком dependencies в строчке `testInstrumentationRunner` раннер может начинаться с `android.support.test`, либо `androidx.test`. </br>Если у вас `android.support.test`, то в dependencies добавляем: </br>
+>  ` androidTestImplementation 'com.android.support.test:rules:1.0.2' ` 
 
->  ` androidTestImplementation 'com.android.support.test:rules:1.0.2' `
+а если `androidx.test`, то </br>
+>  ` androidTestImplementation 'androidx.test:rules:1.2.0' `
 
-и убедиться, что пакет и версия соответствую с раннером:
+Ваша версия зависимости должна совпадать с версией вашего раннера. Это строчка в dependencies "...test:runner:ВЕРСИЯ" </br>
 
-> ` androidTestImplementation 'com.android.support.test:runner:1.0.2' ` </br>
-Полный [build.gradle здесь](https://github.com/russdreamer/dev-intensive-2019-tests/blob/hometask_3_tests/app/build.gradle)
+<b>ВНИМАНИЕ!</b> если у вас runner androidx, то после добавления всех зависимостей, нужно будет удалить конфликтующий импорт в классах тестов и добавить свой (через Alt+Enter) из пакета androidx.</br>
 
 </br></br>
 * Здесь лежат тесты уже для всех заданий.
@@ -22,15 +24,3 @@
   
 > Непроверенные методы:
 * --отсутствуют--
-
-</br></br>
-Ошибки:</br>
-В случае возникновения ошибок, когда не может найти классы тестов в импорте - проверьте, используете ли вы в build.gradle:</br>
-`testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"`
-
-в этом случае помимо</br>
-` androidTestImplementation 'com.android.support.test:rules:1.0.2'`
-
-добавить в зависимости:</br>
-`androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'`</br>
-`androidTestImplementation 'androidx.test:runner:1.2.0'`
