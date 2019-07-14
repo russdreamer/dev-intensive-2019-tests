@@ -139,7 +139,6 @@ class Task3 {
         assertEquals("Это неправильный ответ\nКак меня зовут?", rule.activity.textTxt.text)
         rotateScreen(rule.activity, true)
         rotateScreen(rule.activity, false)
-        Thread.sleep(2000)
         Espresso.onView(ViewMatchers.withId(rule.activity.messageEt.id)).perform(ViewActions.typeText("Ender"))
         Espresso.onView(ViewMatchers.withId(rule.activity.sendBtn.id)).perform(ViewActions.click())
         assertEquals("Это неправильный ответ. Давай все по новой\nКак меня зовут?", rule.activity.textTxt.text)

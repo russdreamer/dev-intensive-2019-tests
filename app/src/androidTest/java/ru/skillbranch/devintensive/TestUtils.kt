@@ -26,4 +26,5 @@ fun rotateScreen(activity: Activity, isLandscape: Boolean){
         activity.requestedOrientation = if (isLandscape) ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE else ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
     }
     InstrumentationRegistry.getInstrumentation().waitForIdleSync()
+    Thread.sleep(2000)
 }
