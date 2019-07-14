@@ -22,7 +22,7 @@ class Task1 {
 
     @Test
     fun rotateWithoutIdTest(){
-        val editText = findEditTextView(rule.activity.findViewById(R.id.content))
+        val editText = findEditTextView(rule.activity.findViewById(android.R.id.content))
         assertNotNull(editText)
         Espresso.onView(ViewMatchers
             .withClassName(Matchers.endsWith("EditText")))
