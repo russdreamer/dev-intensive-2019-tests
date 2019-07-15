@@ -8,6 +8,8 @@
 
 а если `androidx.test`, то </br>
 >  ` androidTestImplementation 'androidx.test:rules:1.2.0' `
+</br> и </br>
+> `androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'`
 
 Ваша версия зависимости должна совпадать с версией вашего раннера. Это строчка в dependencies "...test.runner:ВЕРСИЯ" </br>
 
