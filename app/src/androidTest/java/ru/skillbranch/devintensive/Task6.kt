@@ -18,7 +18,7 @@ class Task6 {
     val rule = ActivityTestRule(MainActivity::class.java)
 
     @Test
-    fun validateTest(){
+    fun validateTest1(){
         assertEquals("Как меня зовут?", rule.activity.textTxt.text)
         assertEquals(Bender.Status.NORMAL, rule.activity.benderObj.status)
 
@@ -123,5 +123,17 @@ class Task6 {
 
         assertEquals("На этом все, вопросов больше нет", rule.activity.textTxt.text)
         assertEquals(Bender.Status.CRITICAL, rule.activity.benderObj.status)
+    }
+
+    @Test
+    fun validateTest2(){
+        assertEquals("Как меня зовут?", rule.activity.textTxt.text)
+        assertEquals(Bender.Status.NORMAL, rule.activity.benderObj.status)
+
+        Espresso.onView(ViewMatchers.withId(rule.activity.messageEt.id)).perform(ViewActions.typeText("bender"))
+        Espresso.onView(ViewMatchers.withId(rule.activity.messageEt.id)).perform(ViewActions.pressImeActionButton())
+
+        assertEquals("Имя должно начинаться с заглавной буквы\nКак меня зовут?", rule.activity.textTxt.text)
+        assertEquals(Bender.Status.NORMAL, rule.activity.benderObj.status)
     }
 }
