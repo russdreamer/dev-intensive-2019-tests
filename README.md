@@ -8,7 +8,7 @@
 
 а если `androidx.test`, то </br>
 >  ` androidTestImplementation 'androidx.test:rules:1.2.0' `
-</br> `androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'` </br>
+</br>и </br>
 > `androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'`
 
 <b>ВНИМАНИЕ!</b> если у вас runner androidx, то после добавления всех зависимостей, нужно будет удалить конфликтующий импорт в классах тестов и добавить свой (через Alt+Enter) из пакета androidx.</br>
