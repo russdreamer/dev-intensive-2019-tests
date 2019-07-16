@@ -1,25 +1,23 @@
 package ru.skillbranch.devintensive
 
 import android.graphics.Rect
-import android.support.test.espresso.Espresso
-import android.support.test.espresso.action.ViewActions
-import android.support.test.espresso.matcher.ViewMatchers
-import android.support.test.rule.ActivityTestRule
-import android.support.test.runner.AndroidJUnit4
 import android.view.View
-import org.junit.Assert.*
+import androidx.test.espresso.Espresso
+import androidx.test.espresso.action.ViewActions
+import androidx.test.espresso.matcher.ViewMatchers
+import androidx.test.rule.ActivityTestRule
+import org.junit.Assert.assertEquals
+import org.junit.Assert.assertTrue
 import org.junit.Rule
 import org.junit.Test
-import org.junit.runner.RunWith
 
-@RunWith(AndroidJUnit4::class)
 class Task5 {
     @Rule
     @JvmField
     val rule = ActivityTestRule(MainActivity::class.java)
 
     @Test
-    fun onDoneBtnTest(){
+    fun onDoneBtnTest() {
         Espresso.onView(ViewMatchers.withId(rule.activity.messageEt.id)).perform(ViewActions.typeText("Bender"))
         Thread.sleep(2000)
 

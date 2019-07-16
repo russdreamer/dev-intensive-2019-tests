@@ -1,24 +1,21 @@
 package ru.skillbranch.devintensive
 
-import android.support.test.espresso.Espresso
-import android.support.test.espresso.action.ViewActions
-import android.support.test.espresso.matcher.ViewMatchers
-import android.support.test.rule.ActivityTestRule
-import android.support.test.runner.AndroidJUnit4
+import androidx.test.espresso.Espresso
+import androidx.test.espresso.action.ViewActions
+import androidx.test.espresso.matcher.ViewMatchers
+import androidx.test.rule.ActivityTestRule
 import org.junit.Assert.assertEquals
 import org.junit.Rule
 import org.junit.Test
-import org.junit.runner.RunWith
 import ru.skillbranch.devintensive.models.Bender
 
-@RunWith(AndroidJUnit4::class)
 class Task6 {
     @Rule
     @JvmField
     val rule = ActivityTestRule(MainActivity::class.java)
 
     @Test
-    fun validateTest1(){
+    fun validateTest1() {
         assertEquals("Как меня зовут?", rule.activity.textTxt.text)
         assertEquals(Bender.Status.NORMAL, rule.activity.benderObj.status)
 
@@ -73,13 +70,19 @@ class Task6 {
         Espresso.onView(ViewMatchers.withId(rule.activity.messageEt.id)).perform(ViewActions.typeText("02.01.1817"))
         Espresso.onView(ViewMatchers.withId(rule.activity.sendBtn.id)).perform(ViewActions.click())
 
-        assertEquals("Год моего рождения должен содержать только цифры\nКогда меня создали?", rule.activity.textTxt.text)
+        assertEquals(
+            "Год моего рождения должен содержать только цифры\nКогда меня создали?",
+            rule.activity.textTxt.text
+        )
         assertEquals(Bender.Status.DANGER, rule.activity.benderObj.status)
 
         Espresso.onView(ViewMatchers.withId(rule.activity.messageEt.id)).perform(ViewActions.typeText("May 14 1967"))
         Espresso.onView(ViewMatchers.withId(rule.activity.sendBtn.id)).perform(ViewActions.click())
 
-        assertEquals("Год моего рождения должен содержать только цифры\nКогда меня создали?", rule.activity.textTxt.text)
+        assertEquals(
+            "Год моего рождения должен содержать только цифры\nКогда меня создали?",
+            rule.activity.textTxt.text
+        )
         assertEquals(Bender.Status.DANGER, rule.activity.benderObj.status)
 
         Espresso.onView(ViewMatchers.withId(rule.activity.messageEt.id)).perform(ViewActions.typeText("2993"))
@@ -118,7 +121,8 @@ class Task6 {
         assertEquals("На этом все, вопросов больше нет", rule.activity.textTxt.text)
         assertEquals(Bender.Status.CRITICAL, rule.activity.benderObj.status)
 
-        Espresso.onView(ViewMatchers.withId(rule.activity.messageEt.id)).perform(ViewActions.typeText(" fdk e_f+!ef t556 "))
+        Espresso.onView(ViewMatchers.withId(rule.activity.messageEt.id))
+            .perform(ViewActions.typeText(" fdk e_f+!ef t556 "))
         Espresso.onView(ViewMatchers.withId(rule.activity.sendBtn.id)).perform(ViewActions.click())
 
         assertEquals("На этом все, вопросов больше нет", rule.activity.textTxt.text)
@@ -126,7 +130,7 @@ class Task6 {
     }
 
     @Test
-    fun validateTest2(){
+    fun validateTest2() {
         assertEquals("Как меня зовут?", rule.activity.textTxt.text)
         assertEquals(Bender.Status.NORMAL, rule.activity.benderObj.status)
 
