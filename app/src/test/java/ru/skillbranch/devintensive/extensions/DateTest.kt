@@ -3,6 +3,7 @@ package ru.skillbranch.devintensive.extensions
 import org.junit.Assert.*
 import org.junit.Test
 import java.util.*
+import java.text.SimpleDateFormat
 
 class DateTest {
     @Test
