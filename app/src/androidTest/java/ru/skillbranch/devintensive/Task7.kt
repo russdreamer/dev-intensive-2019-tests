@@ -19,15 +19,33 @@ class Task7 {
     val rule = ActivityTestRule(MainActivity::class.java)
 
     @Test
-    fun isKeyboardClosedTest(){
+    fun isKeyboardClosedTestPortrait() {
         Thread.sleep(2000)
         assertTrue(rule.activity.isKeyboardClosed())
     }
 
     @Test
-    fun isKeyboardOpenTest(){
+    fun isKeyboardClosedTestLandscape() {
+        rotateScreen(rule.activity, true)
+        Thread.sleep(2000)
+        assertTrue(rule.activity.isKeyboardClosed())
+        rotateScreen(rule.activity, false)
+    }
+
+    @Test
+    fun isKeyboardOpenTestPortrait() {
         Espresso.onView(ViewMatchers.withId(rule.activity.messageEt.id)).perform(ViewActions.typeText("something"))
         Thread.sleep(2000)
         assertTrue(rule.activity.isKeyboardOpen())
+    }
+
+    @Test
+    fun isKeyboardOpenTestLandscape() {
+        rotateScreen(rule.activity, true)
+        Espresso.onView(ViewMatchers.withId(rule.activity.messageEt.id))
+            .perform(ViewActions.typeText("something in landscape"))
+        Thread.sleep(2000)
+        assertTrue(rule.activity.isKeyboardOpen())
+        rotateScreen(rule.activity, false)
     }
 }
