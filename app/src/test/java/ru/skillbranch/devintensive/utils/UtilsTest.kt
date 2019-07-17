@@ -41,7 +41,7 @@ class UtilsTest {
         assertEquals("Amazing_Petr", Utils.transliteration("Amazing Петр","_"))
 
         /* additional tests */
-        assertEquals("iVan     Stereotizhov", Utils.transliteration("иВан     Стереотижов"))
+        assertEquals("iVan Stereotizhov", Utils.transliteration("иВан Стереотижов"))
         assertEquals("Amazing_PeZhr", Utils.transliteration("Amazing ПеЖр", "_"))
         assertEquals("aAbBvVgGdDeEeEzhZhzZiIiIkKlL", Utils.transliteration("аАбБвВгГдДеЕёЁжЖзЗиИйЙкКлЛ"))
         assertEquals("mMnNoOpPrRsStTuUfFhHcCshShsh'Sh'", Utils.transliteration("мМнНоОпПрРсСтТуУфФхХцЦшШщЩ"))
