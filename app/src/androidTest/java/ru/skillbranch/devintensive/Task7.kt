@@ -25,6 +25,14 @@ class Task7 {
     }
 
     @Test
+    fun isKeyboardOpenTestPortrait() {
+        Espresso.onView(ViewMatchers.withId(rule.activity.messageEt.id)).perform(ViewActions.typeText("something"))
+        Thread.sleep(2000)
+        assertTrue(rule.activity.isKeyboardOpen())
+    }
+
+    /* ВНИМАНИЕ!!! Этот режим не тестируется в SkillBranch. Если не проходит - не страшно. */
+    @Test
     fun isKeyboardClosedTestLandscape() {
         rotateScreen(rule.activity, true)
         Thread.sleep(2000)
@@ -32,13 +40,7 @@ class Task7 {
         rotateScreen(rule.activity, false)
     }
 
-    @Test
-    fun isKeyboardOpenTestPortrait() {
-        Espresso.onView(ViewMatchers.withId(rule.activity.messageEt.id)).perform(ViewActions.typeText("something"))
-        Thread.sleep(2000)
-        assertTrue(rule.activity.isKeyboardOpen())
-    }
-
+    /* ВНИМАНИЕ!!! Этот режим не тестируется в SkillBranch. Если не проходит - не страшно. */
     @Test
     fun isKeyboardOpenTestLandscape() {
         rotateScreen(rule.activity, true)
