@@ -66,6 +66,7 @@ class Task7 {
         check("https://github.com/security", false)
         check("https://github.com/securitys", true)
         check("https://github.com/ myrep", false)
+        check("https://github.com/my_rep", false)
         check("https://github.com/my rep", false)
         check("https://github.com/myrep _", false)
         check("https://github.com//myrep", false)
@@ -73,6 +74,21 @@ class Task7 {
         check("/myrep", false)
         check("myrep", false)
     }
+
+    /* ВНИМАНИЕ!!! Этот тест не является обязательным. Но соответствует реальной валидации на github
+     * Можете проверить лишь для себя */
+    @Test
+    fun fullValidationTest() {
+        check("github.com/_myrep", false)
+        check("github.com/myrep_", false)
+        check("github.com/my_rep", false)
+        check("github.com/my--rep", false)
+        check("github.com/-myrep", false)
+        check("github.com/myrep-", false)
+        check("github.com/myrep!", false)
+        check("github.com/+myrep", false)
+    }
+
 
     @Test
     fun saveOnRotate() {
