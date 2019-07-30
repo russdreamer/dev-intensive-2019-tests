@@ -3,6 +3,7 @@ package ru.skillbranch.devintensive
 import android.widget.EditText
 import androidx.test.espresso.Espresso
 import androidx.test.espresso.action.ViewActions
+import androidx.test.espresso.assertion.ViewAssertions
 import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.rule.ActivityTestRule
@@ -78,6 +79,7 @@ class Task7 {
         Espresso.onView(ViewMatchers.withId(editBtnId!!)).perform(ViewActions.click())
         typeRepo("https://www.github.com/johnDoe")
         rotateScreen(rule.activity, true)
+        Espresso.onView(ViewMatchers.withId(editBtnId!!)).check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
         Espresso.onView(ViewMatchers.withId(editBtnId!!)).perform(ViewActions.click())
     }
 
