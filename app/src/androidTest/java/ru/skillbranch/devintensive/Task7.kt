@@ -47,10 +47,15 @@ class Task7 {
         check("https://github.com/enterprise", false)
         check("", true)
         check("https://github.com/pricing", false)
+        check("https://github.com/surpricing", true)
         check("https://github.com/join", false)
+        check("https://github.com/join2", true)
         check("https://github.com/features", false)
+        check("https://github.com/ufeatures", true)
         check("https://github.com/topics", false)
+        check("https://github.com/topics-knopics", true)
         check("https://github.com/collections", false)
+        check("https://github.com/my-collections", true)
         check("https://github.com/trending", false)
         check("https://github.com/events", false)
         check("https://github.com/marketplace", false)
@@ -58,6 +63,7 @@ class Task7 {
         check("https://github.com/johnDoe123", true)
         check("https://github.com/customer-stories", false)
         check("https://github.com/security", false)
+        check("https://github.com/securitys", true)
         check("https://github.com/ myrep", false)
         check("https://github.com/my rep", false)
         check("https://github.com/myrep _", false)
@@ -65,7 +71,14 @@ class Task7 {
         check("https://github.com/myrep//", false)
         check("/myrep", false)
         check("myrep", false)
+    }
 
+    @Test
+    fun saveOnRotate() {
+        Espresso.onView(ViewMatchers.withId(editBtnId!!)).perform(ViewActions.click())
+        typeRepo("https://www.github.com/johnDoe")
+        rotateScreen(rule.activity, true)
+        Espresso.onView(ViewMatchers.withId(editBtnId!!)).perform(ViewActions.click())
     }
 
     private fun check(text: String, isValid: Boolean) {
@@ -99,6 +112,8 @@ class Task7 {
     private fun checkError(isValid: Boolean) {
         if (!isValid)
             assertEquals("Невалидный адрес репозитория", weRepo!!.error.toString())
+        else
+            assertTrue(weRepo!!.error == null)
     }
 
     private fun typeRepo(text: String) {
