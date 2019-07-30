@@ -68,6 +68,17 @@ class Task2 {
         checkInfo()
     }
 
+    @Test
+    fun saveAfterRotate(){
+        val editBtnId = rule.activity.resources.getIdentifier("btn_edit", "id", rule.activity.packageName)
+        clearInfo()
+        Espresso.onView(ViewMatchers.withId(editBtnId)).perform(ViewActions.click())
+        fillInfo()
+        rotateScreen(rule.activity, true)
+        Espresso.onView(ViewMatchers.withId(editBtnId)).perform(ViewActions.click())
+        checkInfo()
+    }
+
     private fun checkInfo() {
         val firstNameId = rule.activity.resources.getIdentifier("et_first_name", "id", rule.activity.packageName)
         Espresso.onView(ViewMatchers.withId(firstNameId)).check(matches(withText("Anton")))
