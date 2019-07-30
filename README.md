@@ -2,7 +2,7 @@
 
 <b>ВНИМАНИЕ!</b> Если вы делаете мои тесты впервые, ознакомьтесь с первоначальной инструкцией [здесь](https://github.com/russdreamer/dev-intensive-2019-tests/tree/hometask_3_tests) !
 
-<b>ВНИМАНИЕ!</b> Я у себя обновил build.gradle на runner от androidx, проверяйте свои импорты.
+<b>ВНИМАНИЕ!</b> Я у себя обновил build.gradle на runner от androidx, проверяйте свои импорты. Мой gradle так же выложен.
 
 <b>ВНИМАНИЕ!</b> Добавлена новая зависимость для тестов: </br>
 >  ` androidTestImplementation 'com.android.support:palette-v7:28.0.0' ` 
