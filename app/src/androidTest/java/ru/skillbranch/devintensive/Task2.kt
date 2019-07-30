@@ -69,6 +69,36 @@ class Task2 {
     }
 
     @Test
+    fun saveEmptyOnExitTest(){
+        val editBtnId = rule.activity.resources.getIdentifier("btn_edit", "id", rule.activity.packageName)
+        clearInfo()
+        Espresso.onView(ViewMatchers.withId(editBtnId)).perform(ViewActions.click())
+        fillInfo()
+        Espresso.onView(ViewMatchers.withId(editBtnId)).perform(ViewActions.click())
+        checkInfo()
+
+        var intent = rule.activity.intent
+        rule.finishActivity()
+        Thread.sleep(1000)
+        rule.launchActivity(intent)
+        Thread.sleep(1000)
+
+        checkInfo()
+        Espresso.onView(ViewMatchers.withId(editBtnId)).perform(ViewActions.click())
+        clearInfo()
+        Espresso.onView(ViewMatchers.withId(editBtnId)).perform(ViewActions.click())
+        checkEmptyInfo()
+
+        intent = rule.activity.intent
+        rule.finishActivity()
+        Thread.sleep(1000)
+        rule.launchActivity(intent)
+        Thread.sleep(1000)
+
+        checkEmptyInfo()
+    }
+
+    @Test
     fun saveAfterRotate(){
         val editBtnId = rule.activity.resources.getIdentifier("btn_edit", "id", rule.activity.packageName)
         clearInfo()
@@ -91,6 +121,20 @@ class Task2 {
 
         val repoId = rule.activity.resources.getIdentifier("et_repository", "id", rule.activity.packageName)
         Espresso.onView(ViewMatchers.withId(repoId)).check(matches(withText("github.com/bender")))
+    }
+
+    private fun checkEmptyInfo() {
+        val firstNameId = rule.activity.resources.getIdentifier("et_first_name", "id", rule.activity.packageName)
+        Espresso.onView(ViewMatchers.withId(firstNameId)).check(matches(withText("")))
+
+        val lastNameId = rule.activity.resources.getIdentifier("et_last_name", "id", rule.activity.packageName)
+        Espresso.onView(ViewMatchers.withId(lastNameId)).check(matches(withText("")))
+
+        val aboutId = rule.activity.resources.getIdentifier("et_about", "id", rule.activity.packageName)
+        Espresso.onView(ViewMatchers.withId(aboutId)).check(matches(withText("")))
+
+        val repoId = rule.activity.resources.getIdentifier("et_repository", "id", rule.activity.packageName)
+        Espresso.onView(ViewMatchers.withId(repoId)).check(matches(withText("")))
     }
 
     private fun fillInfo() {

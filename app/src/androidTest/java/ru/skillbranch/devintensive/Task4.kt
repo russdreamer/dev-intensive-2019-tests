@@ -1,11 +1,9 @@
 package ru.skillbranch.devintensive
 
 import android.graphics.Color
-import android.util.TypedValue
-import android.view.View
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.rule.ActivityTestRule
-import org.junit.Assert.*
+import org.junit.Assert.assertEquals
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -28,9 +26,8 @@ class Task4 {
 
         val colorAccent = rule.activity.resources.getIdentifier("color_accent", "color", rule.activity.packageName)
         avatarView.setBorderColor(colorAccent)
-        val value = TypedValue()
-        rule.activity.theme.resolveAttribute(R.attr.colorAccent, value, true)
-        assertEquals(value.data, avatarView.getBorderColor())
+        val color = rule.activity.resources.getColor(colorAccent, rule.activity.theme)
+        assertEquals(color, avatarView.getBorderColor())
 
         avatarView.setBorderColor("#FC4C4C")
         assertEquals(Color.parseColor("#FC4C4C"), avatarView.getBorderColor())
