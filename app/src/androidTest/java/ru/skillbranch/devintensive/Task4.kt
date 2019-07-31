@@ -21,6 +21,9 @@ class Task4 {
         val avatarViewId = rule.activity.resources.getIdentifier("iv_avatar", "id", rule.activity.packageName)
         val avatarView = rule.activity.findViewById<CircleImageView>(avatarViewId)
 
+        assertEquals(2, avatarView.getBorderWidth())
+        assertEquals(-1, avatarView.getBorderColor())
+
         avatarView.setBorderWidth(0)
         assertEquals(0, avatarView.getBorderWidth())
 
