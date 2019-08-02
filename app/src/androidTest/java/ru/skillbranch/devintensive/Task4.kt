@@ -27,6 +27,9 @@ class Task4 {
         avatarView.setBorderWidth(0)
         assertEquals(0, avatarView.getBorderWidth())
 
+        avatarView.setBorderWidth(23)
+        assertEquals(23, avatarView.getBorderWidth())
+
         val colorAccent = rule.activity.resources.getIdentifier("color_accent", "color", rule.activity.packageName)
         avatarView.setBorderColor(colorAccent)
         val color = rule.activity.resources.getColor(colorAccent, rule.activity.theme)

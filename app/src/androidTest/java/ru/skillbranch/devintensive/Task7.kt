@@ -36,8 +36,10 @@ class Task7 {
     fun validateRepoTest(){
         check("https://anyDomain.github.com/johnDoe", false)
         check("https://github.com/johnDoe", true)
+        check("https://github5com/johnDoe", false)
         check("https://github.com/", false)
         check("https://www.github.com/johnDoe", true)
+        check("https://www4github.com/johnDoe", false)
         check("https://github.com", false)
         check("www.github.com/johnDoe", true)
         check("https://github.com/johnDoe/tree", false)
