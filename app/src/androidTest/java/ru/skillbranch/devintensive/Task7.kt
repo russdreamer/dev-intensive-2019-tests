@@ -127,13 +127,21 @@ class Task7 {
             assertEquals(text, repo!!.text.toString())
         else
             assertEquals("", repo!!.text.toString())
+
+        assertTrue(weRepo!!.error == null)
+        assertTrue(weRepo!!.isErrorEnabled.not())
     }
 
     private fun checkError(isValid: Boolean) {
-        if (!isValid)
+        if (!isValid){
             assertEquals("Невалидный адрес репозитория", weRepo!!.error.toString())
-        else
+            assertTrue(weRepo!!.isErrorEnabled)
+            assertTrue(weRepo!!.error != null)
+        }
+        else {
             assertTrue(weRepo!!.error == null)
+            assertTrue(weRepo!!.isErrorEnabled.not())
+        }
     }
 
     private fun typeRepo(text: String) {
