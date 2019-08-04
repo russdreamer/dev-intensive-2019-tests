@@ -52,10 +52,9 @@ class Task8 {
         color = palette.getDominantColor(0)
         assertEquals(-14642960, color)
 
-        assertEquals(2, ava!!.getBorderWidth())
-        assertEquals(Color.WHITE, ava!!.getBorderColor())
-
         rule.activity.runOnUiThread {
+            assertEquals(2, ava!!.getBorderWidth())
+            assertEquals(Color.WHITE, ava!!.getBorderColor())
             ava!!.setBorderColor(R.color.color_gray_dark)
             ava!!.setBorderWidth(20)
 
