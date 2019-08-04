@@ -8,6 +8,7 @@ import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.rule.ActivityTestRule
 import com.google.android.material.textfield.TextInputLayout
+import org.hamcrest.CoreMatchers.not
 import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Rule
@@ -26,6 +27,7 @@ class Task7 {
     var weRepoId: Int? = null
     var weRepo: TextInputLayout? = null
     var editBtnId: Int? = null
+    var eyeId: Int? = null
 
     @Before
     fun beforeTest(){
@@ -102,12 +104,25 @@ class Task7 {
     }
 
     private fun check(text: String, isValid: Boolean) {
+        checkEye(true)
         Espresso.onView(ViewMatchers.withId(editBtnId!!)).perform(ViewActions.click())
+        checkEye(false)
         typeRepo(text)
+        checkEye(false)
         checkError(isValid)
+        rotateScreen(rule.activity, true)
         Espresso.onView(ViewMatchers.withId(editBtnId!!)).perform(ViewActions.click())
+        rotateScreen(rule.activity, false)
+        updateFields()
         checkSave(isValid, text)
         checkExit(isValid, text)
+    }
+
+    private fun checkEye(isVisible: Boolean) {
+        if (isVisible)
+            Espresso.onView(ViewMatchers.withId(eyeId!!)).check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
+        else
+            Espresso.onView(ViewMatchers.withId(eyeId!!)).check(ViewAssertions.matches(not(ViewMatchers.isDisplayed())))
     }
 
     private fun checkExit(isValid: Boolean, text: String) {
@@ -119,7 +134,6 @@ class Task7 {
         updateFields()
 
         checkSave(isValid, text)
-
     }
 
     private fun checkSave(isValid: Boolean, text: String) {
@@ -156,5 +170,6 @@ class Task7 {
         weRepoId = rule.activity.resources.getIdentifier("wr_repository", "id", rule.activity.packageName)
         weRepo = rule.activity.findViewById<TextInputLayout>(weRepoId!!)
         editBtnId = rule.activity.resources.getIdentifier("btn_edit", "id", rule.activity.packageName)
+        eyeId = rule.activity.resources.getIdentifier("ic_eye", "id", rule.activity.packageName)
     }
 }
