@@ -52,17 +52,19 @@ class Task8 {
         color = palette.getDominantColor(0)
         assertEquals(-14642960, color)
 
-        assertEquals(2, ava!!.getBorderWidth())
-        assertEquals(Color.WHITE, ava!!.getBorderColor())
-        ava!!.setBorderColor(R.color.color_gray_dark)
-        ava!!.setBorderWidth(20)
+        rule.activity.runOnUiThread {
+            assertEquals(2, ava!!.getBorderWidth())
+            assertEquals(Color.WHITE, ava!!.getBorderColor())
+            ava!!.setBorderColor(R.color.color_gray_dark)
+            ava!!.setBorderWidth(20)
 
-        color = rule.activity.resources.getColor(R.color.color_gray_dark, rule.activity.theme)
-        assertEquals(color, ava!!.getBorderColor())
-        assertEquals(20, ava!!.getBorderWidth())
+            color = rule.activity.resources.getColor(R.color.color_gray_dark, rule.activity.theme)
+            assertEquals(color, ava!!.getBorderColor())
+            assertEquals(20, ava!!.getBorderWidth())
 
-        ava!!.setBorderColor("#1ab33e")
-        assertEquals(-15027394, ava!!.getBorderColor())
+            ava!!.setBorderColor("#1ab33e")
+            assertEquals(-15027394, ava!!.getBorderColor())
+        }
     }
 
     private fun switchTheme() {
