@@ -24,18 +24,20 @@ class Task4 {
         assertEquals(2, avatarView.getBorderWidth())
         assertEquals(-1, avatarView.getBorderColor())
 
-        avatarView.setBorderWidth(0)
-        assertEquals(0, avatarView.getBorderWidth())
+        rule.activity.runOnUiThread {
+            avatarView.setBorderWidth(0)
+            assertEquals(0, avatarView.getBorderWidth())
 
-        avatarView.setBorderWidth(23)
-        assertEquals(23, avatarView.getBorderWidth())
+            avatarView.setBorderWidth(23)
+            assertEquals(23, avatarView.getBorderWidth())
 
-        val colorAccent = rule.activity.resources.getIdentifier("color_accent", "color", rule.activity.packageName)
-        avatarView.setBorderColor(colorAccent)
-        val color = rule.activity.resources.getColor(colorAccent, rule.activity.theme)
-        assertEquals(color, avatarView.getBorderColor())
+            val colorAccent = rule.activity.resources.getIdentifier("color_accent", "color", rule.activity.packageName)
+            avatarView.setBorderColor(colorAccent)
+            val color = rule.activity.resources.getColor(colorAccent, rule.activity.theme)
+            assertEquals(color, avatarView.getBorderColor())
 
-        avatarView.setBorderColor("#FC4C4C")
-        assertEquals(Color.parseColor("#FC4C4C"), avatarView.getBorderColor())
+            avatarView.setBorderColor("#FC4C4C")
+            assertEquals(Color.parseColor("#FC4C4C"), avatarView.getBorderColor())
+        }
     }
 }
